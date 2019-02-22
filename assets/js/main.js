@@ -1,9 +1,4 @@
-/**
- * Tevent v1.0.0 - tevent - Event Template
- * @link 
- * @copyright 2016-2017 ThemeBucket
- * @license ISC
- */
+
 ; (function () {
     'use strict';
 
