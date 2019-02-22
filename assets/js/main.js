@@ -4,7 +4,7 @@
  * @copyright 2016-2017 ThemeBucket
  * @license ISC
  */
-;(function () {
+; (function () {
     'use strict';
 
     var $body = $('body'),
@@ -34,7 +34,7 @@
             $(".retina, .navbar-brand img, .logo img").each(function () {
                 var src = $(this).attr("src").replace(".", "@2x.");
                 var h = $(this).height();
-                $(this).attr("src", src).css({height: h, width: "auto"});
+                $(this).attr("src", src).css({ height: h, width: "auto" });
             });
         });
     }
@@ -51,27 +51,27 @@
     // grab an element
     var myElement = document.getElementById('header');
     // construct an instance of Headroom, passing the element
-    var headroom  = new Headroom(myElement, {
+    var headroom = new Headroom(myElement, {
         tolerance: {
-            down : 50,
-            up : 0
+            down: 50,
+            up: 0
         },
-        offset : 50,
-        classes : {
+        offset: 50,
+        classes: {
             // when element is initialised
-            initial : "",
+            initial: "",
             // when scrolling up
-            pinned : "Sticky--pinned",
+            pinned: "Sticky--pinned",
             // when scrolling down
-            unpinned : "Sticky--unpinned",
+            unpinned: "Sticky--unpinned",
             // when above offset
-            top : "Sticky--top",
+            top: "Sticky--top",
             // when below offset
-            notTop : "Sticky--not-top",
+            notTop: "Sticky--not-top",
             // when at bottom of scoll area
-            bottom : "headroom--bottom",
+            bottom: "headroom--bottom",
             // when not at bottom of scroll area
-            notBottom : "headroom--not-bottom"
+            notBottom: "headroom--not-bottom"
         }
     });
     // initialise
@@ -82,7 +82,7 @@
     /*==============================================
      Returns height of browser viewport
      ===============================================*/
-    $window.on('resize.windowscreen', function() {
+    $window.on('resize.windowscreen', function () {
         var height = $(this).height(),
             width = $(this).width(),
 
@@ -98,8 +98,8 @@
             $mainNav_height = $mainNav.height(),
             $mainNav_nextSection = $mainNav.parent().next();
 
-            windowHeight = $window.height();
-            windowWidth = $window.width();
+        windowHeight = $window.height();
+        windowWidth = $window.width();
 
         // bottom nav
         if ($mainNavSticky) {
@@ -107,7 +107,7 @@
                 $_bottom_navBanner = $_bottom_nav.prev($jsFullHeight),
                 $_bottom_bannerHeight = height - $mainNav_height;
 
-                $_bottom_navBanner.height($_bottom_bannerHeight);
+            $_bottom_navBanner.height($_bottom_bannerHeight);
         } else {
             if (isFixedNavbar && !isNoBgNavbar || !isTransNavbar) {
                 var _height = height - $mainNav_height;
@@ -138,7 +138,7 @@
     /*==============================================
      Switch init
      ===============================================*/
-    $('.js-Switch').each(function(){
+    $('.js-Switch').each(function () {
         new Switchery(this, $(this).data());
     })
 
@@ -147,17 +147,17 @@
      Parallax
      ===============================================*/
 
-    $.fn.alienParallax = function() {
+    $.fn.alienParallax = function () {
         var $this = $(this), el_top;
-        $this.each(function() { el_top = $this.offset().top; });
+        $this.each(function () { el_top = $this.offset().top; });
         function update() {
             if (windowWidth <= 992) {
                 return;
             }
             var pos = $window.scrollTop();
-            $this.each(function() {
+            $this.each(function () {
                 var $el = $(this), top = $el.offset().top, height = $el.outerHeight(true);
-                if (top + height < pos || top > pos + windowHeight )
+                if (top + height < pos || top > pos + windowHeight)
                     return;
                 $this.css('backgroundPosition', '50% ' + Math.round((el_top - pos) * 0.4) + 'px');
             })
@@ -165,11 +165,11 @@
         $window.on('scroll resize', update).trigger('update');
     };
 
-    $('.ImageBackground').each(function(){
+    $('.ImageBackground').each(function () {
         var $this = $(this),
             $imgHolder = $this.children('.ImageBackground__holder'),
             thisIMG = $imgHolder.children().attr('src'),
-            thisURL = 'url('+thisIMG+')';
+            thisURL = 'url(' + thisIMG + ')';
         $imgHolder.css('background-image', thisURL);
 
         if ($this.hasClass('js-Parallax') && windowWidth > 992) {
@@ -183,16 +183,16 @@
     /*==============================================
      CountTo init
      ===============================================*/
-    $('.js-CountTo').each(function() {
+    $('.js-CountTo').each(function () {
         var $this = $(this),
-        firstLoadCountEvent = true;
+            firstLoadCountEvent = true;
 
-        $this.waypoint(function() {
+        $this.waypoint(function () {
             if (firstLoadCountEvent) {
                 $this.countTo({
-                    speed : 2000,
-                    refreshInterval : 50,
-                    formatter : function(value, options) {
+                    speed: 2000,
+                    refreshInterval: 50,
+                    formatter: function (value, options) {
                         value = value.toFixed(options.decimals);
                         value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
                         return value;
@@ -201,8 +201,8 @@
                 firstLoadCountEvent = false;
             }
         }, {
-            offset : '90%'
-        });
+                offset: '90%'
+            });
     });
 
 
@@ -214,55 +214,55 @@
         loop: true,
         margin: 0,
         nav: true,
-        navText : ["", ""]
+        navText: ["", ""]
     });
 
     $('.js-OwlCarousel2').owlCarousel({
         margin: 40,
         nav: true,
-        navText : ["", ""],
+        navText: ["", ""],
         slideBy: 1,
-        responsive : {
-            0 : { items: 1 },
-            480 : { items: 2 }
+        responsive: {
+            0: { items: 1 },
+            480: { items: 2 }
         }
     });
 
     $('.js-OwlCarousel3').owlCarousel({
         margin: 40,
         nav: true,
-        navText : ["", ""],
+        navText: ["", ""],
         slideBy: 1,
-        responsive : {
-            0 : { items: 1 },
-            480 : { items: 2 },
-            768 : { items: 3 }
+        responsive: {
+            0: { items: 1 },
+            480: { items: 2 },
+            768: { items: 3 }
         }
     });
 
     $('.js-OwlCarousel4').owlCarousel({
         margin: 40,
         nav: true,
-        navText : ["", ""],
+        navText: ["", ""],
         slideBy: 1,
-        responsive : {
-            0 : { items: 1 },
-            480 : { items: 2 },
-            768 : { items: 3 },
-            992 : { items: 4 }
+        responsive: {
+            0: { items: 1 },
+            480: { items: 2 },
+            768: { items: 3 },
+            992: { items: 4 }
         }
     });
 
     $('.js-OwlCarousel5').owlCarousel({
         margin: 40,
         nav: true,
-        navText : ["", ""],
+        navText: ["", ""],
         slideBy: 1,
-        responsive : {
-            0 : { items: 2 },
-            480 : { items: 2 },
-            768 : { items: 3 },
-            992 : { items: 5 }
+        responsive: {
+            0: { items: 2 },
+            480: { items: 2 },
+            768: { items: 3 },
+            992: { items: 5 }
         }
     });
 
@@ -270,7 +270,7 @@
     /*==============================================
      Progressbar init
      ===============================================*/
-    $('.progress').each(function() {
+    $('.progress').each(function () {
         var dataParcent = $(this).attr('data-percent'),
             progressTitle,
             progressTitle__outer = $(this).prev('.progress-title'),
@@ -282,9 +282,9 @@
             progressTitle = progressTitle__inner.css('width', dataParcent)
         }
 
-        $(this).appear(function() {
+        $(this).appear(function () {
             $(this).find('.progress-bar').animate({
-                width : dataParcent
+                width: dataParcent
             }, 500);
         });
     });
@@ -310,7 +310,7 @@
         var $this = $(this);
         e.preventDefault();
         $this.parent().addClass('active').siblings().removeClass('active');
-        $alienPortfolio.isotope({filter: $this.data('filter')});
+        $alienPortfolio.isotope({ filter: $this.data('filter') });
     });
 
 
@@ -337,8 +337,8 @@
 
     // Example 1: From an element in DOM
     $('.open-popup-link').magnificPopup({
-      type:'inline',
-      midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
+        type: 'inline',
+        midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
     });
 
 
@@ -346,29 +346,29 @@
      Countdown
      ===============================================*/
 
-    $('#counting-date').countdown('2020/10/10').on('update.countdown', function(event) {
+    $('#counting-date').countdown('2019/4/9').on('update.countdown', function (event) {
         var $this = $(this).html(event.strftime(''
-        + '<div class="count-block"><h2 class="u-FontSize50">%D</h2> <span>Days</span> </div>'
-        + '<div class="count-block"><h2 class="u-FontSize50">%H</h2> <span>Hours</span> </div>'
-        + '<div class="count-block"><h2 class="u-FontSize50">%M</h2> <span>Minutes</span> </div>'
-        + '<div class="count-block"><h2 class="u-FontSize50">%S</h2> <span>Seconds</span></div>'));
+            + '<div class="count-block"><h2 class="u-FontSize50">%D</h2> <span>Days</span> </div>'
+            + '<div class="count-block"><h2 class="u-FontSize50">%H</h2> <span>Hours</span> </div>'
+            + '<div class="count-block"><h2 class="u-FontSize50">%M</h2> <span>Minutes</span> </div>'
+            + '<div class="count-block"><h2 class="u-FontSize50">%S</h2> <span>Seconds</span></div>'));
     });
 
 
     /*==============================================
      Returns height of browser viewport
      ===============================================*/
-    $('.ScrollTo').on('click', function(e) {
+    $('.ScrollTo').on('click', function (e) {
         e.preventDefault();
         var element_id = $(this).attr('href');
         $('html, body').animate({
-            scrollTop: $(element_id).offset().top -60
-        },500);
+            scrollTop: $(element_id).offset().top - 60
+        }, 500);
     });
 
 })(jQuery);
 
-;(function () {
+; (function () {
     'use strict';
 
     var swiper = new Swiper('.swiper-container', {
@@ -386,13 +386,13 @@
         prevButton: '.swiper-button-prev',
         paginationType: 'custom',
         paginationCustomRender: function (swiper, current, total) {
-            return '<div class="swiperCount">'+
-                        '<span class="swiperCount-current">'+ current +'</span>'+
-                        '<i class="swiperCount-devider"></i>'+
-                        '<span class="swiperCount-total">'+ total +'</span>'+
-                   '</div>';
+            return '<div class="swiperCount">' +
+                '<span class="swiperCount-current">' + current + '</span>' +
+                '<i class="swiperCount-devider"></i>' +
+                '<span class="swiperCount-total">' + total + '</span>' +
+                '</div>';
         },
-        onSlideChangeStart: function(s) {
+        onSlideChangeStart: function (s) {
 
             var activeSlide = document.querySelector(".swiper-slide-active");
             var swiperControl = document.querySelectorAll(".swiper-control");
@@ -402,11 +402,11 @@
             // animated css via data-animate="aminate-name"
             var currAnimateItems = activeSlide.querySelectorAll("[data-animate]");
 
-            swiperControl.forEach(function(control) {
+            swiperControl.forEach(function (control) {
                 control.dataset.scheme = colorScheme;
             });
 
-            Array.prototype.forEach.call(currAnimateItems, function(item) {
+            Array.prototype.forEach.call(currAnimateItems, function (item) {
                 var dataAnimateName = item.getAttribute("data-animate");
                 item.classList.add(dataAnimateName);
                 item.classList.add("animated");
@@ -416,9 +416,9 @@
             // for remove animate
             var unActiveSlide = document.querySelectorAll(".swiper-slide:not(.swiper-slide-active)");
 
-            unActiveSlide.forEach(function(unactive) {
+            unActiveSlide.forEach(function (unactive) {
                 var _animateItems = unactive.querySelectorAll("[data-animate]");
-                Array.prototype.forEach.call(_animateItems, function(_item) {
+                Array.prototype.forEach.call(_animateItems, function (_item) {
                     var _dataAnimateName = _item.getAttribute("data-animate");
                     _item.classList.remove(_dataAnimateName);
                 });
